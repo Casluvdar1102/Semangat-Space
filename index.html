@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Semangat Space - Premium Coworking in Johor Bahru</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         /* === CSS VARIABLES === */
         :root {
-            --primary: #FF6B35;
-            --secondary: #003366;
-            --accent: #00A896;
+            --primary: #0ABAB5; /* Tiffany Blue */
+            --secondary: #FF69B4; /* Rose Pink */
+            --accent: #006400; /* Dark Green */
+            --dark-blue: #003366; /* Dark blue for buttons */
             --light: #F8F9FA;
             --dark: #212529;
             --gray: #6C757D;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --light-gray: #e9ecef;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             --transition: all 0.3s ease;
         }
 
@@ -24,11 +27,16 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             color: var(--dark);
             background-color: var(--light);
+            overflow-x: hidden;
         }
 
         .container {
@@ -37,77 +45,194 @@
             padding: 0 20px;
         }
 
-        /* === TYPOGRAPHY === */
-        h1, h2, h3, h4 {
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
+        section {
+            padding: 80px 0;
         }
 
-        h1 {
-            font-size: 3.5rem;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            color: var(--secondary);
-        }
-
-        h3 {
-            font-size: 1.8rem;
-        }
-
-        p {
-            margin-bottom: 1rem;
-        }
-
-        .lead {
-            font-size: 1.25rem;
-            font-weight: 300;
-        }
-
-        /* === BUTTONS === */
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
+        .section-header {
             text-align: center;
-            cursor: pointer;
-            transition: var(--transition);
+            margin-bottom: 3rem;
         }
 
-        .btn-primary {
-            background-color: var(--primary);
-            color: white;
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-weight: 700;
         }
 
-        .btn-primary:hover {
-            background-color: #e55a2b;
-            transform: translateY(-2px);
+        .section-header p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--gray);
+            font-size: 1.1rem;
         }
 
-        .btn-secondary {
-            background-color: var(--secondary);
-            color: white;
+        /* === ANIMATED LOGO STYLES === */
+        .logo-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
         }
-
-        .btn-secondary:hover {
-            background-color: #002244;
-            transform: translateY(-2px);
+        
+        .logo-circle {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(10, 186, 181, 0.09);
+            box-shadow: 0 0 30px rgba(10, 186, 181, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 25s infinite ease-in-out;
         }
-
-        .btn-outline {
-            background-color: transparent;
-            color: var(--secondary);
-            border: 2px solid var(--secondary);
+        
+        .logo-inner {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(10, 186, 181, 0.08);
+            box-shadow: 0 0 20px rgba(10, 186, 181, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-
-        .btn-outline:hover {
-            background-color: var(--secondary);
-            color: white;
+        
+        .logo-core {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            box-shadow: 0 0 25px rgba(10, 186, 181, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-core::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            animation: shine 10s infinite linear;
+        }
+        
+        .connecting-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            height: 1px;
+            width: 200px;
+            top: 50%;
+            left: 0;
+            transform-origin: center;
+            opacity: 0.6;
+        }
+        
+        .line:nth-child(1) { transform: rotate(0deg); }
+        .line:nth-child(2) { transform: rotate(45deg); }
+        .line:nth-child(3) { transform: rotate(90deg); }
+        .line:nth-child(4) { transform: rotate(135deg); }
+        
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .element {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: rgba(10, 186, 181, 0.7);
+            box-shadow: 0 0 10px rgba(10, 186, 181, 0.5);
+        }
+        
+        .element:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation: float 12s infinite ease-in-out;
+        }
+        
+        .element:nth-child(2) {
+            top: 15%;
+            right: 20%;
+            animation: float 15s infinite ease-in-out;
+            animation-delay: 1s;
+        }
+        
+        .element:nth-child(3) {
+            bottom: 25%;
+            left: 15%;
+            animation: float 18s infinite ease-in-out;
+            animation-delay: 2s;
+        }
+        
+        .element:nth-child(4) {
+            bottom: 15%;
+            right: 10%;
+            animation: float 14s infinite ease-in-out;
+            animation-delay: 3s;
+        }
+        
+        .logo-text {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        
+        .logo-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .logo-subtitle {
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 6px;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+        
+        .slogan {
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--gray);
+            margin-top: 1rem;
+            position: relative;
+            padding: 0 1rem;
+        }
+        
+        .slogan::before, .slogan::after {
+            content: "~";
+            position: absolute;
+            top: 0;
+            color: var(--primary);
+        }
+        
+        .slogan::before {
+            left: 0;
+        }
+        
+        .slogan::after {
+            right: 0;
         }
 
         /* === HEADER & NAVIGATION === */
@@ -118,24 +243,76 @@
             width: 100%;
             top: 0;
             z-index: 1000;
+            padding: 15px 0;
         }
 
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
+            display: flex;
+            align-items: center;
             text-decoration: none;
+            gap: 15px;
         }
 
-        .logo span {
-            color: var(--secondary);
+        .logo-mini {
+            width: 50px;
+            height: 50px;
+            position: relative;
+        }
+
+        .logo-mini-circle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: rgba(10, 186, 181, 0.1);
+            box-shadow: 0 0 10px rgba(10, 186, 181, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-mini-inner {
+            width: 70%;
+            height: 70%;
+            border-radius: 50%;
+            background: rgba(10, 186, 181, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-mini-core {
+            width: 40%;
+            height: 40%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-main {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .logo-sub {
+            font-size: 0.7rem;
+            color: var(--primary);
+            letter-spacing: 1.5px;
+            margin-top: 2px;
         }
 
         .nav-links {
@@ -149,10 +326,27 @@
             color: var(--dark);
             font-weight: 500;
             transition: var(--transition);
+            position: relative;
+            font-size: 1rem;
         }
 
         .nav-links a:hover {
-            color: var(--primary);
+            color: var(--secondary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .mobile-menu-btn {
@@ -161,85 +355,201 @@
             border: none;
             font-size: 1.5rem;
             cursor: pointer;
+            color: var(--dark);
+        }
+
+        /* === BUTTONS === */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(10, 186, 181, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: #08918c;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(10, 186, 181, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background-color: #e0559c;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Darker Book a Tour Button */
+        .btn-dark {
+            background-color: var(--light-gray-blue);
+            color: white;
+            border: 2px solid var(--dark-blue);
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 51, 102, 0.3);
+        }
+
+        .btn-dark:hover {
+            background-color: #002244;
+            color: white;
+            border: 2px solid #002244;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 51, 102, 0.4);
         }
 
         /* === HERO SECTION === */
         .hero {
-            background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)), url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3') center/cover;
+            background: linear-gradient(135deg, rgba(10, 186, 181, 0.9) 0%, rgba(0, 100, 0, 0.85) 100%), url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover;
             color: white;
-            padding: 160px 0 100px;
+            padding: 180px 0 100px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
         }
 
         .hero h1 {
             font-size: 3.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
         .hero .lead {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            font-weight: 300;
+            line-height: 1.7;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
+            margin-top: 2rem;
         }
 
-        /* === SECTIONS === */
-        section {
-            padding: 80px 0;
+        .audience-tags {
+            margin-top: 3rem;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
+        .audience-tag {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
         }
 
-        .section-header p {
-            max-width: 600px;
-            margin: 0 auto;
-            color: var(--gray);
+        .audience-tag:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
         }
 
         /* === SPACES SECTION === */
+        .spaces {
+            background-color: white;
+        }
+
         .spaces-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .space-card {
             background: white;
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            border-top: 4px solid var(--secondary);
+            position: relative;
         }
 
         .space-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
         .space-image {
-            height: 200px;
+            height: 220px;
             background-color: var(--gray);
             background-size: cover;
             background-position: center;
+            position: relative;
+        }
+
+        .space-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
         }
 
         .space-content {
-            padding: 1.5rem;
+            padding: 2rem;
         }
 
         .space-price {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 0.5rem;
@@ -247,13 +557,14 @@
 
         .space-features {
             list-style: none;
-            margin: 1rem 0;
+            margin: 1.5rem 0;
         }
 
         .space-features li {
-            padding: 0.3rem 0;
+            padding: 0.5rem 0;
             position: relative;
-            padding-left: 1.5rem;
+            padding-left: 2rem;
+            font-size: 0.95rem;
         }
 
         .space-features li:before {
@@ -261,11 +572,12 @@
             color: var(--accent);
             position: absolute;
             left: 0;
+            font-weight: bold;
         }
 
         /* === AMENITIES SECTION === */
         .amenities {
-            background-color: #f8f9fa;
+            background-color: var(--light-gray);
         }
 
         .amenities-grid {
@@ -276,39 +588,75 @@
 
         .amenity-item {
             text-align: center;
-            padding: 2rem 1rem;
+            padding: 2.5rem 1.5rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+
+        .amenity-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
         .amenity-icon {
-            font-size: 3rem;
-            color: var(--primary);
+            font-size: 3.5rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .amenity-item h3 {
+            font-size: 1.3rem;
             margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .amenity-item p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
         /* === PRICING SECTION === */
         .pricing-table {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
         }
 
         .pricing-card {
             background: white;
-            border-radius: 10px;
-            padding: 2rem;
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
             text-align: center;
             box-shadow: var(--shadow);
             transition: var(--transition);
             border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
         }
 
         .pricing-card.featured {
-            border-color: var(--primary);
+            border-color: var(--secondary);
             transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
 
         .pricing-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
         .pricing-card.featured:hover {
@@ -316,21 +664,117 @@
         }
 
         .price {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 700;
             color: var(--primary);
-            margin: 1rem 0;
+            margin: 1.5rem 0;
         }
 
         .price-period {
             font-size: 1rem;
             color: var(--gray);
+            font-weight: 400;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .pricing-features li {
+            padding: 0.7rem 0;
+            position: relative;
+            padding-left: 2rem;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        .pricing-features li:before {
+            content: "✓";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* === TARGET AUDIENCE SECTION === */
+        .audience-section {
+            background: linear-gradient(135deg, rgba(255, 105, 180, 0.9) 0%, rgba(10, 186, 181, 0.9) 100%), url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover;
+            color: white;
+            position: relative;
+        }
+
+        .audience-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        .audience-section h2, .audience-section h3 {
+            color: white;
+        }
+
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .audience-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            color: var(--dark);
+            backdrop-filter: blur(10px);
+        }
+
+        .audience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .audience-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .audience-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .audience-card p {
+            color: var(--gray);
+            line-height: 1.6;
+            font-size: 0.95rem;
         }
 
         /* === LOCATION SECTION === */
         .location {
-            background: linear-gradient(rgba(255, 107, 53, 0.9), rgba(255, 107, 53, 0.9)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3') center/cover;
+            background: linear-gradient(135deg, rgba(10, 186, 181, 0.9) 0%, rgba(0, 100, 0, 0.9) 100%), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3') center/cover;
             color: white;
+            position: relative;
+        }
+
+        .location::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
         }
 
         .location h2, .location h3 {
@@ -340,7 +784,7 @@
         .location-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 4rem;
             align-items: center;
         }
 
@@ -353,14 +797,22 @@
         }
 
         .contact-info div {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.05rem;
+        }
+
+        .contact-info div strong {
+            min-width: 120px;
         }
 
         /* === CONTACT FORM === */
         .contact-form {
             background: white;
-            padding: 2rem;
-            border-radius: 10px;
+            padding: 2.5rem;
+            border-radius: 12px;
             box-shadow: var(--shadow);
         }
 
@@ -372,27 +824,28 @@
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
-            color: var(--secondary);
+            color: var(--accent);
         }
 
         .form-control {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             border: 1px solid #ddd;
             border-radius: 5px;
             font-size: 1rem;
             transition: var(--transition);
+            font-family: 'Poppins', sans-serif;
         }
 
         .form-control:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+            box-shadow: 0 0 0 3px rgba(10, 186, 181, 0.2);
         }
 
         /* === FOOTER === */
         footer {
-            background-color: var(--secondary);
+            background-color: var(--accent);
             color: white;
             padding: 60px 0 30px;
         }
@@ -400,21 +853,84 @@
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            gap: 3rem;
             margin-bottom: 2rem;
         }
 
+        .footer-logo-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
         .footer-logo {
-            font-size: 1.8rem;
+            width: 60px;
+            height: 60px;
+            position: relative;
+            margin-right: 15px;
+        }
+
+        .footer-logo-circle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-logo-inner {
+            width: 70%;
+            height: 70%;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-logo-core {
+            width: 40%;
+            height: 40%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, white 0%, var(--primary) 100%);
+        }
+
+        .footer-logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo-main {
+            font-size: 1.4rem;
             font-weight: 700;
+            color: white;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .footer-logo-sub {
+            font-size: 0.7rem;
             color: var(--primary);
-            margin-bottom: 1rem;
+            letter-spacing: 1.2px;
+            margin-top: 2px;
+        }
+
+        .footer-about p {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
         }
 
         .footer-links h3 {
             color: white;
             margin-bottom: 1.5rem;
             font-size: 1.3rem;
+            font-weight: 600;
         }
 
         .footer-links ul {
@@ -422,17 +938,21 @@
         }
 
         .footer-links li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
         }
 
         .footer-links a {
             color: #ccc;
             text-decoration: none;
             transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .footer-links a:hover {
             color: var(--primary);
+            transform: translateX(5px);
         }
 
         .copyright {
@@ -440,9 +960,43 @@
             padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        /* === ANIMATIONS === */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+        }
+        
+        @keyframes shine {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(10px, -15px); }
+            50% { transform: translate(-5px, 10px); }
+            75% { transform: translate(15px, 5px); }
         }
 
         /* === RESPONSIVE DESIGN === */
+        @media (max-width: 992px) {
+            .location-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+            }
+            
+            .pricing-card.featured:hover {
+                transform: translateY(-5px);
+            }
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.5rem;
@@ -450,6 +1004,47 @@
             
             h2 {
                 font-size: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero .lead {
+                font-size: 1.2rem;
+            }
+            
+            .logo-container {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .logo-circle {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .logo-inner {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .logo-core {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .line {
+                width: 150px;
+            }
+            
+            .logo-title {
+                font-size: 1.8rem;
+            }
+            
+            .logo-subtitle {
+                font-size: 0.9rem;
+                letter-spacing: 4px;
             }
             
             .nav-links {
@@ -460,9 +1055,10 @@
                 width: 100%;
                 background: white;
                 flex-direction: column;
-                padding: 1rem 0;
+                padding: 1.5rem 0;
                 box-shadow: var(--shadow);
-            }
+                z-index: 999;
+            }#FF6551
             
             .nav-links.active {
                 display: flex;
@@ -475,102 +1071,127 @@
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
+                gap: 1rem;
             }
             
             .hero-buttons .btn {
                 width: 100%;
                 max-width: 300px;
             }
-            
-            .location-content {
-                grid-template-columns: 1fr;
+        }
+
+        @media (max-width: 576px) {
+            section {
+                padding: 60px 0;
             }
             
-            .pricing-card.featured {
-                transform: none;
+            .section-header h2 {
+                font-size: 1.8rem;
             }
             
-            .pricing-card.featured:hover {
-                transform: translateY(-5px);
+            .hero {
+                padding: 150px 0 80px;
             }
-        }
-
-        /* Accessibility improvements */
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            background: #003366;
-            color: white;
-            padding: 8px;
-            z-index: 1000;
-            transition: top 0.3s ease;
-        }
-
-        .skip-link:focus {
-            top: 0;
-        }
-
-        /* Add focus styles for accessibility */
-        a:focus,
-        button:focus,
-        input:focus,
-        select:focus,
-        textarea:focus {
-            outline: 2px solid var(--primary);
-            outline-offset: 2px;
-        }
-
-        /* Remove transform on hover for keyboard users */
-        @media (prefers-reduced-motion: no-preference) {
-            .btn-primary:hover,
-            .btn-secondary:hover,
-            .pricing-card:hover {
-                transform: translateY(-5px);
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .space-card, .amenity-item, .pricing-card, .audience-card {
+                padding: 1.5rem;
+            }
+            
+            .contact-form {
+                padding: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Skip link for accessibility -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-
     <!-- Header & Navigation -->
     <header>
         <div class="container">
             <nav class="navbar">
-                <a href="#" class="logo">Semangat<span>Space</span></a>
+                <a href="#" class="logo">
+                    <div class="logo-mini">
+                        <div class="logo-mini-circle">
+                            <div class="logo-mini-inner">
+                                <div class="logo-mini-core"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="logo-text">
+                        <div class="logo-main">SEMANGAT</div>
+                        <div class="logo-sub">SPACE</div>
+                    </div>
+                </a>
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#spaces">Spaces</a></li>
                     <li><a href="#amenities">Amenities</a></li>
                     <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#audience">For You</a></li>
                     <li><a href="#location">Location</a></li>
-                    <li><a href="#contact" class="btn btn-primary">Book a Tour</a></li>
+                    <li><a href="#contact" class="btn btn-dark">Book a Tour</a></li>
                 </ul>
                 <button class="mobile-menu-btn">☰</button>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Animated Logo -->
     <section class="hero" id="home">
         <div class="container">
-            <h1>Where Passion Meets Workspace</h1>
-            <p class="lead">Semangat Space: JB's premier coworking hub with reliable high-speed internet, all-inclusive pricing & vibrant community. Perfect for remote workers saving costs & local entrepreneurs growing businesses.</p>
+            <div class="logo-container">
+                <div class="logo-circle">
+                    <div class="logo-inner">
+                        <div class="logo-core"></div>
+                    </div>
+                </div>
+                
+                <div class="connecting-lines">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+                
+                <div class="floating-elements">
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                    <div class="element"></div>
+                </div>
+            </div>
+            
+            <div class="logo-text">
+                <h1 class="logo-title">Semangat Space Co-Office</h1>
+                <h2 class="logo-subtitle">Semangat Space</h2>
+                <p class="slogan">We are Together, Bersama</p>
+            </div>
+
+            <p class="lead">Semangat Space: Where new entrepreneurs, content creators, small businesses, and students find their perfect work environment. Affordable, flexible, and designed for your success.</p>
             <div class="hero-buttons">
                 <a href="#spaces" class="btn btn-primary">View Spaces</a>
-                <a href="#contact" class="btn btn-outline">Book a Tour</a>
+                <a href="#contact" class="btn btn-dark">Book a Tour</a>
+            </div>
+            <div class="audience-tags">
+                <span class="audience-tag">New Entrepreneurs</span>
+                <span class="audience-tag">Online Creators</span>
+                <span class="audience-tag">Small Businesses</span>
+                <span class="audience-tag">Influencers</span>
+                <span class="audience-tag">Local Connections</span>
+                <span class="audience-tag">Students & Teachers</span>
             </div>
         </div>
     </section>
 
     <!-- Spaces Section -->
-    <section id="spaces">
+    <section id="spaces" class="spaces">
         <div class="container">
             <div class="section-header">
-                <h2>Our Spaces</h2>
-                <p>Choose from our flexible workspace options designed for productivity and collaboration</p>
+                <h2>Flexible Workspaces</h2>
+                <p>Choose the perfect setup for your work style and budget</p>
             </div>
             <div class="spaces-grid">
                 <!-- Hot Desk -->
@@ -579,12 +1200,13 @@
                     <div class="space-content">
                         <h3>Hot Desk</h3>
                         <div class="space-price">From RM 250/month</div>
-                        <p>Flexible seating in our vibrant shared workspace. Perfect for freelancers and remote workers.</p>
+                        <p>Perfect for freelancers, students, and those who need flexibility. Work from different spots in our vibrant space.</p>
                         <ul class="space-features">
+                            <li>Flexible seating options</li>
                             <li>High-speed WiFi</li>
                             <li>Access to common areas</li>
                             <li>Free coffee & tea</li>
-                            <li>Printing facilities</li>
+                            <li>Networking opportunities</li>
                         </ul>
                         <a href="#contact" class="btn btn-secondary">Inquire Now</a>
                     </div>
@@ -596,12 +1218,13 @@
                     <div class="space-content">
                         <h3>Dedicated Desk</h3>
                         <div class="space-price">From RM 450/month</div>
-                        <p>Your own personal desk in a shared office environment with storage and guaranteed seating.</p>
+                        <p>Your own personal space with storage. Perfect for growing businesses and serious creators.</p>
                         <ul class="space-features">
                             <li>Personal locker space</li>
                             <li>24/7 access</li>
                             <li>Meeting room credits</li>
-                            <li>Mail handling</li>
+                            <li>Mail handling service</li>
+                            <li>Priority booking for events</li>
                         </ul>
                         <a href="#contact" class="btn btn-secondary">Inquire Now</a>
                     </div>
@@ -613,12 +1236,13 @@
                     <div class="space-content">
                         <h3>Private Office</h3>
                         <div class="space-price">RM 1,200 - 1,800/month</div>
-                        <p>Fully furnished private rooms (100-150 sq ft) perfect for teams of 1-4 people.</p>
+                        <p>Fully furnished private rooms for teams of 1-4. Perfect for startups and small businesses.</p>
                         <ul class="space-features">
                             <li>Lockable private room</li>
                             <li>Furniture included</li>
                             <li>Soundproof walls</li>
                             <li>All amenities included</li>
+                            <li>Professional business address</li>
                         </ul>
                         <a href="#contact" class="btn btn-secondary">Inquire Now</a>
                     </div>
@@ -628,7 +1252,7 @@
     </section>
 
     <!-- Amenities Section -->
-    <section class="amenities" id="amenities">
+    <section id="amenities" class="amenities">
         <div class="container">
             <div class="section-header">
                 <h2>Premium Amenities</h2>
@@ -638,32 +1262,32 @@
                 <div class="amenity-item">
                     <div class="amenity-icon">🚀</div>
                     <h3>High-Speed Internet</h3>
-                    <p>Fiber optic with backup connection for uninterrupted work</p>
+                    <p>Gigabit fiber with backup for seamless streaming and uploads</p>
                 </div>
                 <div class="amenity-item">
-                    <div class="amenity-icon">☕</div>
-                    <h3>Free Coffee & Tea</h3>
-                    <p>Premium Malaysian coffee and selection of teas available all day</p>
+                    <div class="amenity-icon">🎥</div>
+                    <h3>Content Studio</h3>
+                    <p>Professional lighting and backdrop for photos and videos</p>
                 </div>
                 <div class="amenity-item">
-                    <div class="amenity-icon">🖨️</div>
-                    <h3>Business Services</h3>
-                    <p>Printing, scanning, and admin support when you need it</p>
+                    <div class="amenity-icon">💻</div>
+                    <h3>Tech Support</h3>
+                    <p>Help with setup, software, and digital tools</p>
                 </div>
                 <div class="amenity-item">
                     <div class="amenity-icon">👥</div>
                     <h3>Networking Events</h3>
-                    <p>Regular community events and workshops</p>
+                    <p>Connect with fellow creators and local businesses</p>
                 </div>
                 <div class="amenity-item">
-                    <div class="amenity-icon">🔒</div>
-                    <h3>24/7 Secure Access</h3>
-                    <p>Work on your own schedule with secure building access</p>
+                    <div class="amenity-icon">📚</div>
+                    <h3>Learning Hub</h3>
+                    <p>Workshops on digital marketing, branding, and business</p>
                 </div>
                 <div class="amenity-item">
-                    <div class="amenity-icon">💬</div>
-                    <h3>Meeting Rooms</h3>
-                    <p>Bookable spaces for client meetings and team sessions</p>
+                    <div class="amenity-icon">☕</div>
+                    <h3>Cafe & Lounge</h3>
+                    <p>Premium coffee, tea, and relaxing break areas</p>
                 </div>
             </div>
         </div>
@@ -673,19 +1297,20 @@
     <section id="pricing">
         <div class="container">
             <div class="section-header">
-                <h2>Simple, All-Inclusive Pricing</h2>
-                <p>No hidden costs. Everything you need to grow your business.</p>
+                <h2>Simple, Transparent Pricing</h2>
+                <p>No hidden fees. Student and teacher discounts available.</p>
             </div>
             <div class="pricing-table">
                 <div class="pricing-card">
                     <h3>Hot Desk</h3>
                     <div class="price">RM 250<span class="price-period">/month</span></div>
                     <p>Perfect for flexible workers</p>
-                    <ul class="space-features">
+                    <ul class="pricing-features">
                         <li>Open workspace access</li>
                         <li>High-speed WiFi</li>
                         <li>Complimentary drinks</li>
                         <li>Business hours access</li>
+                        <li>Community events</li>
                     </ul>
                     <a href="#contact" class="btn btn-outline">Get Started</a>
                 </div>
@@ -694,11 +1319,12 @@
                     <h3>Dedicated Desk</h3>
                     <div class="price">RM 450<span class="price-period">/month</span></div>
                     <p>Your own personal space</p>
-                    <ul class="space-features">
-                        <li>Guaranteed desk</li>
-                        <li>Personal locker</li>
-                        <li>24/7 access</li>
-                        <li>Meeting room credits</li>
+                    <ul class="pricing-features">
+                        <li>Guaranteed desk + locker</li>
+                        <li>24/7 secure access</li>
+                        <li>5 meeting room hours/month</li>
+                        <li>Mail handling</li>
+                        <li>Content studio access</li>
                     </ul>
                     <a href="#contact" class="btn btn-primary">Most Popular</a>
                 </div>
@@ -707,11 +1333,12 @@
                     <h3>Private Office</h3>
                     <div class="price">RM 1,200<span class="price-period">/month</span></div>
                     <p>For focused teams</p>
-                    <ul class="space-features">
+                    <ul class="pricing-features">
                         <li>Lockable private room</li>
                         <li>Fully furnished</li>
                         <li>All amenities included</li>
-                        <li>Team collaboration space</li>
+                        <li>10 meeting room hours/month</li>
+                        <li>Professional business address</li>
                     </ul>
                     <a href="#contact" class="btn btn-outline">Get Started</a>
                 </div>
@@ -719,35 +1346,80 @@
         </div>
     </section>
 
-    <!-- Location & Contact Section -->
-    <section class="location" id="location">
+    <!-- Target Audience Section -->
+    <section id="audience" class="audience-section">
         <div class="container">
             <div class="section-header">
-                <h2>Visit Us in Johor Bahru</h2>
-                <p>Perfectly located for Singapore remote workers and local businesses</p>
+                <h2>Designed Specifically For You</h2>
+                <p>Whatever your journey, we have the space and community to support you</p>
+            </div>
+            <div class="audience-grid">
+                <div class="audience-card">
+                    <div class="audience-icon">🚀</div>
+                    <h3>New Entrepreneurs</h3>
+                    <p>Start your business with minimal overhead. Get mentorship, networking opportunities, and professional space to meet clients.</p>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-icon">💻</div>
+                    <h3>Online Creators</h3>
+                    <p>Content studio, fast internet, and collaborative environment perfect for YouTubers, influencers, and digital creators.</p>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-icon">🏢</div>
+                    <h3>Small Businesses</h3>
+                    <p>Professional address, meeting rooms, and flexible terms as you grow. No long-term leases required.</p>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-icon">📚</div>
+                    <h3>Students & Teachers</h3>
+                    <p>Special discounts for academic community. Quiet study areas, group project spaces, and research resources.</p>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-icon">🤝</div>
+                    <h3>Local Connections</h3>
+                    <p>Connect with other professionals in Kota Putri. Regular networking events and business mixers.</p>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-icon">🎯</div>
+                    <h3>Freelancers</h3>
+                    <p>Escape isolation and join a community. Affordable plans perfect for solo professionals and remote workers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Contact Section -->
+    <section id="location" class="location">
+        <div class="container">
+            <div class="section-header">
+                <h2>Visit Us in Kota Putri, Masai</h2>
+                <p>Perfectly located for both city access and industrial areas</p>
             </div>
             <div class="location-content">
                 <div class="location-info">
-                    <h3>Our Location</h3>
-                    <p>Prime location in Bukit Indah, with easy access from Singapore and all major amenities nearby.</p>
+                    <h3>Our Strategic Location</h3>
+                    <p>Prime location in KOTA PUTRI, MASAI, with easy access from CITY, INDUSTRIAL areas and all major amenities nearby. Perfect for local entrepreneurs and those commuting from across Johor.</p>
                     
                     <div class="contact-info">
-                        <div><strong>📍 Address:</strong> [Prime location in Bukit Indah/Medini area], Johor Bahru</div>
-                        <div><strong>📞 Phone:</strong> +60 12-345 6789</div>
+                        <div><strong>📍 Address:</strong> KOTA PUTRI, MASAI, Johor Bahru</div>
+                        <div><strong>📞 Phone:</strong> +60 12-7012011</div>
                         <div><strong>📧 Email:</strong> hello@semangatspace.com</div>
+                        <div><strong>🕒 Staffed Hours:</strong> Mon-Fri 8:30AM-6PM | Sat 9AM-2PM</div>
+                        <div><strong>🔑 Member Access:</strong> 24/7 with secure entry</div>
                     </div>
                     
-                    <h3>Operating Hours</h3>
-                    <p><strong>24/7 Member Access</strong><br>
-                    Staffed: Monday - Friday, 8:30 AM - 6:00 PM</p>
+                    <h3>Special Offers</h3>
+                    <p><strong>Student/Teacher Discount:</strong> 15% off all plans with valid ID<br>
+                    <strong>First Month Special:</strong> 50% off for new members<br>
+                    <strong>Referral Program:</strong> Earn credits when you refer friends</p>
                     
-                    <a href="#contact" class="btn btn-secondary">Get Directions</a>
+                    <a href="#contact" class="btn btn-dark">Get Directions</a>
                 </div>
                 
                 <div class="contact-form" id="contact">
-                    <h3>Book a Tour</h3>
-                    <p>Come see our space and experience the Semangat community</p>
-                    <form>
+                    <h3>Start Your Journey</h3>
+                    <p>Tell us about your needs and we'll help find the perfect space for you</p>
+                    <form id="tourForm">
                         <div class="form-group">
                             <label for="name">Full Name</label>
                             <input type="text" id="name" class="form-control" required>
@@ -761,6 +1433,20 @@
                             <input type="tel" id="phone" class="form-control" required>
                         </div>
                         <div class="form-group">
+                            <label for="audience-type">I am a...</label>
+                            <select id="audience-type" class="form-control" required>
+                                <option value="">Select your profile</option>
+                                <option value="entrepreneur">New Entrepreneur</option>
+                                <option value="creator">Content Creator/Influencer</option>
+                                <option value="small-business">Small Business Owner</option>
+                                <option value="freelancer">Freelancer/Remote Worker</option>
+                                <option value="student">Student</option>
+                                <option value="teacher">Teacher/Educator</option>
+                                <option value="local-business">Local Business</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="interest">I'm Interested In</label>
                             <select id="interest" class="form-control" required>
                                 <option value="">Select an option</option>
@@ -768,13 +1454,14 @@
                                 <option value="dedicated-desk">Dedicated Desk</option>
                                 <option value="private-office">Private Office</option>
                                 <option value="meeting-room">Meeting Room</option>
+                                <option value="tour">Just a Tour</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" class="form-control" rows="4" placeholder="Tell us about your needs..."></textarea>
+                            <label for="message">Tell us about your project or business</label>
+                            <textarea id="message" class="form-control" rows="4" placeholder="What are you working on? What do you need to succeed?"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Request Tour</button>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Start My Journey</button>
                     </form>
                 </div>
             </div>
@@ -786,8 +1473,20 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <div class="footer-logo">SemangatSpace</div>
-                    <p>Where great ideas find their spirit. Johor Bahru's premier coworking community for entrepreneurs, freelancers, and remote workers.</p>
+                    <div class="footer-logo-container">
+                        <div class="footer-logo">
+                            <div class="footer-logo-circle">
+                                <div class="footer-logo-inner">
+                                    <div class="footer-logo-core"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer-logo-text">
+                            <div class="footer-logo-main">SEMANGAT</div>
+                            <div class="footer-logo-sub">SPACE</div>
+                        </div>
+                    </div>
+                    <p>Where great ideas find their spirit. Kota Putri's creative hub for entrepreneurs, creators, students, and local businesses.</p>
                 </div>
                 
                 <div class="footer-links">
@@ -797,6 +1496,7 @@
                         <li><a href="#spaces">Spaces</a></li>
                         <li><a href="#amenities">Amenities</a></li>
                         <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#audience">For You</a></li>
                         <li><a href="#location">Location</a></li>
                     </ul>
                 </div>
@@ -804,15 +1504,15 @@
                 <div class="footer-links">
                     <h3>Contact Us</h3>
                     <ul>
-                        <li>📍 [Bukit Indah/Medini] JB</li>
-                        <li>📞 +60 12-345 6789</li>
-                        <li>📧 hello@semangatspace.com</li>
+                        <li><a href="#"><strong>📍</strong> KOTA PUTRI, MASAI, JB</a></li>
+                        <li><a href="tel:+6012701200"><strong>📞</strong> +60 12-701200</a></li>
+                        <li><a href="mailto:hello@semangatspace.com"><strong>📧</strong> hello@semangatspace.com</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2024 Semangat Space. All rights reserved. | Singapore quality at Johor Bahru prices</p>
+                <p>&copy; 2024 Semangat Space. All rights reserved. | Kota Putri's Creative Hub</p>
             </div>
         </div>
     </footer>
@@ -840,10 +1540,29 @@
         });
 
         // Form submission
-        document.querySelector('form').addEventListener('submit', function(e) {
+        document.getElementById('tourForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Thank you for your interest! We will contact you shortly to schedule your tour.');
+            const audienceType = document.getElementById('audience-type').value;
+            let message = 'Thank you for your interest in Semangat Space! We will contact you within 24 hours to schedule your tour.';
+            
+            if (audienceType === 'student' || audienceType === 'teacher') {
+                message += ' Be sure to ask about our academic discount when we call!';
+            }
+            
+            alert(message);
             this.reset();
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+                header.style.padding = '10px 0';
+            } else {
+                header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.08)';
+                header.style.padding = '15px 0';
+            }
         });
     </script>
 </body>
