@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semangat Space - Premium Coworking in Johor Bahru</title>
+    <style>
+        /* === CSS VARIABLES === */
+        :root {
+            --primary: #FF6B35;
+            --secondary: #003366;
+            --accent: #00A896;
+            --light: #F8F9FA;
+            --dark: #212529;
+            --gray: #6C757D;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* === RESET & BASE STYLES === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* === TYPOGRAPHY === */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+        }
+
+        h3 {
+            font-size: 1.8rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .lead {
+            font-size: 1.25rem;
+            font-weight: 300;
+        }
+
+        /* === BUTTONS === */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #e55a2b;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #002244;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        /* === HEADER & NAVIGATION === */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* === HERO SECTION === */
+        .hero {
+            background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)), url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3') center/cover;
+            color: white;
+            padding: 160px 0 100px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero .lead {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* === SECTIONS === */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--gray);
+        }
+
+        /* === SPACES SECTION === */
+        .spaces-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .space-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .space-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .space-image {
+            height: 200px;
+            background-color: var(--gray);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .space-content {
+            padding: 1.5rem;
+        }
+
+        .space-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .space-features {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .space-features li {
+            padding: 0.3rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .space-features li:before {
+            content: "✓";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+        }
+
+        /* === AMENITIES SECTION === */
+        .amenities {
+            background-color: #f8f9fa;
+        }
+
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .amenity-item {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .amenity-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* === PRICING SECTION === */
+        .pricing-table {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+
+        .price-period {
+            font-size: 1rem;
+            color: var(--gray);
+        }
+
+        /* === LOCATION SECTION === */
+        .location {
+            background: linear-gradient(rgba(255, 107, 53, 0.9), rgba(255, 107, 53, 0.9)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3') center/cover;
+            color: white;
+        }
+
+        .location h2, .location h3 {
+            color: white;
+        }
+
+        .location-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .location-info {
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            margin: 1.5rem 0;
+        }
+
+        .contact-info div {
+            margin-bottom: 0.5rem;
+        }
+
+        /* === CONTACT FORM === */
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--secondary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+        }
+
+        /* === FOOTER === */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: var(--shadow);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .location-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+            }
+            
+            .pricing-card.featured:hover {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Accessibility improvements */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #003366;
+            color: white;
+            padding: 8px;
+            z-index: 1000;
+            transition: top 0.3s ease;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Add focus styles for accessibility */
+        a:focus,
+        button:focus,
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        /* Remove transform on hover for keyboard users */
+        @media (prefers-reduced-motion: no-preference) {
+            .btn-primary:hover,
+            .btn-secondary:hover,
+            .pricing-card:hover {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">Semangat<span>Space</span></a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#spaces">Spaces</a></li>
+                    <li><a href="#amenities">Amenities</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#location">Location</a></li>
+                    <li><a href="#contact" class="btn btn-primary">Book a Tour</a></li>
+                </ul>
+                <button class="mobile-menu-btn">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Where Passion Meets Workspace</h1>
+            <p class="lead">Semangat Space: JB's premier coworking hub with reliable high-speed internet, all-inclusive pricing & vibrant community. Perfect for remote workers saving costs & local entrepreneurs growing businesses.</p>
+            <div class="hero-buttons">
+                <a href="#spaces" class="btn btn-primary">View Spaces</a>
+                <a href="#contact" class="btn btn-outline">Book a Tour</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spaces Section -->
+    <section id="spaces">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Spaces</h2>
+                <p>Choose from our flexible workspace options designed for productivity and collaboration</p>
+            </div>
+            <div class="spaces-grid">
+                <!-- Hot Desk -->
+                <div class="space-card">
+                    <div class="space-image" style="background-image: url('https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3')"></div>
+                    <div class="space-content">
+                        <h3>Hot Desk</h3>
+                        <div class="space-price">From RM 250/month</div>
+                        <p>Flexible seating in our vibrant shared workspace. Perfect for freelancers and remote workers.</p>
+                        <ul class="space-features">
+                            <li>High-speed WiFi</li>
+                            <li>Access to common areas</li>
+                            <li>Free coffee & tea</li>
+                            <li>Printing facilities</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-secondary">Inquire Now</a>
+                    </div>
+                </div>
+
+                <!-- Dedicated Desk -->
+                <div class="space-card">
+                    <div class="space-image" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3')"></div>
+                    <div class="space-content">
+                        <h3>Dedicated Desk</h3>
+                        <div class="space-price">From RM 450/month</div>
+                        <p>Your own personal desk in a shared office environment with storage and guaranteed seating.</p>
+                        <ul class="space-features">
+                            <li>Personal locker space</li>
+                            <li>24/7 access</li>
+                            <li>Meeting room credits</li>
+                            <li>Mail handling</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-secondary">Inquire Now</a>
+                    </div>
+                </div>
+
+                <!-- Private Office -->
+                <div class="space-card">
+                    <div class="space-image" style="background-image: url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3')"></div>
+                    <div class="space-content">
+                        <h3>Private Office</h3>
+                        <div class="space-price">RM 1,200 - 1,800/month</div>
+                        <p>Fully furnished private rooms (100-150 sq ft) perfect for teams of 1-4 people.</p>
+                        <ul class="space-features">
+                            <li>Lockable private room</li>
+                            <li>Furniture included</li>
+                            <li>Soundproof walls</li>
+                            <li>All amenities included</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-secondary">Inquire Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section class="amenities" id="amenities">
+        <div class="container">
+            <div class="section-header">
+                <h2>Premium Amenities</h2>
+                <p>Everything you need to do your best work, all included in your membership</p>
+            </div>
+            <div class="amenities-grid">
+                <div class="amenity-item">
+                    <div class="amenity-icon">🚀</div>
+                    <h3>High-Speed Internet</h3>
+                    <p>Fiber optic with backup connection for uninterrupted work</p>
+                </div>
+                <div class="amenity-item">
+                    <div class="amenity-icon">☕</div>
+                    <h3>Free Coffee & Tea</h3>
+                    <p>Premium Malaysian coffee and selection of teas available all day</p>
+                </div>
+                <div class="amenity-item">
+                    <div class="amenity-icon">🖨️</div>
+                    <h3>Business Services</h3>
+                    <p>Printing, scanning, and admin support when you need it</p>
+                </div>
+                <div class="amenity-item">
+                    <div class="amenity-icon">👥</div>
+                    <h3>Networking Events</h3>
+                    <p>Regular community events and workshops</p>
+                </div>
+                <div class="amenity-item">
+                    <div class="amenity-icon">🔒</div>
+                    <h3>24/7 Secure Access</h3>
+                    <p>Work on your own schedule with secure building access</p>
+                </div>
+                <div class="amenity-item">
+                    <div class="amenity-icon">💬</div>
+                    <h3>Meeting Rooms</h3>
+                    <p>Bookable spaces for client meetings and team sessions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Simple, All-Inclusive Pricing</h2>
+                <p>No hidden costs. Everything you need to grow your business.</p>
+            </div>
+            <div class="pricing-table">
+                <div class="pricing-card">
+                    <h3>Hot Desk</h3>
+                    <div class="price">RM 250<span class="price-period">/month</span></div>
+                    <p>Perfect for flexible workers</p>
+                    <ul class="space-features">
+                        <li>Open workspace access</li>
+                        <li>High-speed WiFi</li>
+                        <li>Complimentary drinks</li>
+                        <li>Business hours access</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline">Get Started</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <h3>Dedicated Desk</h3>
+                    <div class="price">RM 450<span class="price-period">/month</span></div>
+                    <p>Your own personal space</p>
+                    <ul class="space-features">
+                        <li>Guaranteed desk</li>
+                        <li>Personal locker</li>
+                        <li>24/7 access</li>
+                        <li>Meeting room credits</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Most Popular</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Private Office</h3>
+                    <div class="price">RM 1,200<span class="price-period">/month</span></div>
+                    <p>For focused teams</p>
+                    <ul class="space-features">
+                        <li>Lockable private room</li>
+                        <li>Fully furnished</li>
+                        <li>All amenities included</li>
+                        <li>Team collaboration space</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Contact Section -->
+    <section class="location" id="location">
+        <div class="container">
+            <div class="section-header">
+                <h2>Visit Us in Johor Bahru</h2>
+                <p>Perfectly located for Singapore remote workers and local businesses</p>
+            </div>
+            <div class="location-content">
+                <div class="location-info">
+                    <h3>Our Location</h3>
+                    <p>Prime location in Bukit Indah, with easy access from Singapore and all major amenities nearby.</p>
+                    
+                    <div class="contact-info">
+                        <div><strong>📍 Address:</strong> [Prime location in Bukit Indah/Medini area], Johor Bahru</div>
+                        <div><strong>📞 Phone:</strong> +60 12-345 6789</div>
+                        <div><strong>📧 Email:</strong> hello@semangatspace.com</div>
+                    </div>
+                    
+                    <h3>Operating Hours</h3>
+                    <p><strong>24/7 Member Access</strong><br>
+                    Staffed: Monday - Friday, 8:30 AM - 6:00 PM</p>
+                    
+                    <a href="#contact" class="btn btn-secondary">Get Directions</a>
+                </div>
+                
+                <div class="contact-form" id="contact">
+                    <h3>Book a Tour</h3>
+                    <p>Come see our space and experience the Semangat community</p>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="interest">I'm Interested In</label>
+                            <select id="interest" class="form-control" required>
+                                <option value="">Select an option</option>
+                                <option value="hot-desk">Hot Desk</option>
+                                <option value="dedicated-desk">Dedicated Desk</option>
+                                <option value="private-office">Private Office</option>
+                                <option value="meeting-room">Meeting Room</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" rows="4" placeholder="Tell us about your needs..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Request Tour</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">SemangatSpace</div>
+                    <p>Where great ideas find their spirit. Johor Bahru's premier coworking community for entrepreneurs, freelancers, and remote workers.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#spaces">Spaces</a></li>
+                        <li><a href="#amenities">Amenities</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#location">Location</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>📍 [Bukit Indah/Medini] JB</li>
+                        <li>📞 +60 12-345 6789</li>
+                        <li>📧 hello@semangatspace.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 Semangat Space. All rights reserved. | Singapore quality at Johor Bahru prices</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    document.querySelector('.nav-links').classList.remove('active');
+                }
+            });
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your interest! We will contact you shortly to schedule your tour.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
